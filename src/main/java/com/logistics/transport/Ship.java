@@ -2,9 +2,6 @@ package com.logistics.transport;
 
 import java.util.Objects;
 
-/**
- * Concrete Product representing maritime sea delivery transport.
- */
 public class Ship implements Transport {
 
     @Override

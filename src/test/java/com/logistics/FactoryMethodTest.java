@@ -14,9 +14,6 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for Factory Method pattern implementation.
- */
 class FactoryMethodTest {
 
     @Test
@@ -25,8 +22,8 @@ class FactoryMethodTest {
         Logistics roadLogistics = new RoadLogistics();
         Transport transport = roadLogistics.createTransport();
 
-        assertNotNull(transport, "Factory method must not return null");
-        assertInstanceOf(Truck.class, transport, "RoadLogistics must return a Truck");
+        assertNotNull(transport);
+        assertInstanceOf(Truck.class, transport);
     }
 
     @Test
@@ -35,8 +32,8 @@ class FactoryMethodTest {
         Logistics seaLogistics = new SeaLogistics();
         Transport transport = seaLogistics.createTransport();
 
-        assertNotNull(transport, "Factory method must not return null");
-        assertInstanceOf(Ship.class, transport, "SeaLogistics must return a Ship");
+        assertNotNull(transport);
+        assertInstanceOf(Ship.class, transport);
     }
 
     @Test
@@ -51,9 +48,9 @@ class FactoryMethodTest {
             roadLogistics.planDelivery("laboratory equipment", "Aktau warehouse");
 
             String output = outContent.toString().trim();
-            assertTrue(output.contains("Truck delivers"), "Output should indicate Truck delivery");
-            assertTrue(output.contains("laboratory equipment"), "Output should contain cargo name");
-            assertTrue(output.contains("Aktau warehouse"), "Output should contain destination");
+            assertTrue(output.contains("Truck delivers"));
+            assertTrue(output.contains("laboratory equipment"));
+            assertTrue(output.contains("Aktau warehouse"));
         } finally {
             System.setOut(originalOut);
         }
@@ -71,9 +68,9 @@ class FactoryMethodTest {
             seaLogistics.planDelivery("medical containers", "Baku port");
 
             String output = outContent.toString().trim();
-            assertTrue(output.contains("Ship delivers"), "Output should indicate Ship delivery");
-            assertTrue(output.contains("medical containers"), "Output should contain cargo name");
-            assertTrue(output.contains("Baku port"), "Output should contain destination");
+            assertTrue(output.contains("Ship delivers"));
+            assertTrue(output.contains("medical containers"));
+            assertTrue(output.contains("Baku port"));
         } finally {
             System.setOut(originalOut);
         }

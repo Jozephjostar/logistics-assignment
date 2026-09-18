@@ -17,9 +17,6 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for Abstract Factory pattern implementation.
- */
 class AbstractFactoryTest {
 
     @Test
@@ -31,8 +28,8 @@ class AbstractFactoryTest {
 
         assertNotNull(button);
         assertNotNull(checkbox);
-        assertInstanceOf(WindowsButton.class, button, "Factory should return a WindowsButton");
-        assertInstanceOf(WindowsCheckbox.class, checkbox, "Factory should return a WindowsCheckbox");
+        assertInstanceOf(WindowsButton.class, button);
+        assertInstanceOf(WindowsCheckbox.class, checkbox);
     }
 
     @Test
@@ -44,8 +41,8 @@ class AbstractFactoryTest {
 
         assertNotNull(button);
         assertNotNull(checkbox);
-        assertInstanceOf(MacOSButton.class, button, "Factory should return a MacOSButton");
-        assertInstanceOf(MacOSCheckbox.class, checkbox, "Factory should return a MacOSCheckbox");
+        assertInstanceOf(MacOSButton.class, button);
+        assertInstanceOf(MacOSCheckbox.class, checkbox);
     }
 
     @Test

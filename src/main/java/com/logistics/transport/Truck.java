@@ -2,9 +2,6 @@ package com.logistics.transport;
 
 import java.util.Objects;
 
-/**
- * Concrete Product representing road delivery transport.
- */
 public class Truck implements Transport {
 
     @Override

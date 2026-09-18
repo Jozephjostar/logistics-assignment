@@ -13,14 +13,6 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for DeliveryApplication client combining both patterns.
- * Verifies all 4 required combinations:
- * 1. ROAD + WINDOWS
- * 2. SEA + WINDOWS
- * 3. ROAD + MACOS
- * 4. SEA + MACOS
- */
 class DeliveryApplicationTest {
 
     private String captureOutput(Runnable action) {

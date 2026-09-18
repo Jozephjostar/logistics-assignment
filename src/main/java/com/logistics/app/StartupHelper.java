@@ -9,29 +9,14 @@ import com.logistics.ui.windows.WindowsFactory;
 
 import java.util.Objects;
 
-/**
- * Startup helper responsible for input validation, configuration parsing,
- * and selecting the appropriate Creator and Abstract Factory.
- *
- * Adheres to Single Responsibility Principle by decoupling startup configuration
- * from the client application execution.
- */
 public final class StartupHelper {
 
     public static final String DEFAULT_CARGO = "laboratory equipment";
     public static final String DEFAULT_DESTINATION = "Aktau warehouse";
 
     private StartupHelper() {
-        // Prevent instantiation of utility class
     }
 
-    /**
-     * Parses command-line arguments into a validated configuration record.
-     *
-     * @param args command line arguments
-     * @return parsed AppConfig
-     * @throws IllegalArgumentException if arguments are invalid or missing
-     */
     public static AppConfig parseArguments(String[] args) {
         if (args == null || args.length == 0) {
             throw new IllegalArgumentException("Missing required configuration arguments.\n" + getUsage());
@@ -42,7 +27,6 @@ public final class StartupHelper {
         String cargo = DEFAULT_CARGO;
         String destination = DEFAULT_DESTINATION;
 
-        // Support both flag-based (--delivery ROAD --platform WINDOWS) and positional (ROAD WINDOWS)
         if (args.length >= 2 && !args[0].startsWith("-") && !args[1].startsWith("-")) {
             modeRaw = args[0];
             platformRaw = args[1];
@@ -89,12 +73,6 @@ public final class StartupHelper {
         return new AppConfig(mode, platform, cargo, destination);
     }
 
-    /**
-     * Instantiates the concrete Creator subclass based on validated delivery mode.
-     *
-     * @param mode delivery mode (ROAD or SEA)
-     * @return concrete Logistics creator
-     */
     public static Logistics createLogistics(DeliveryMode mode) {
         Objects.requireNonNull(mode, "DeliveryMode cannot be null");
         return switch (mode) {
@@ -103,12 +81,6 @@ public final class StartupHelper {
         };
     }
 
-    /**
-     * Instantiates the concrete Abstract Factory based on validated UI platform.
-     *
-     * @param platform UI platform (WINDOWS or MACOS)
-     * @return concrete GUIFactory implementation
-     */
     public static GUIFactory createGUIFactory(UIPlatform platform) {
         Objects.requireNonNull(platform, "UIPlatform cannot be null");
         return switch (platform) {
@@ -117,9 +89,6 @@ public final class StartupHelper {
         };
     }
 
-    /**
-     * Returns standard usage instructions.
-     */
     public static String getUsage() {
         return "Usage:\n" +
                "  java -jar logistics-app.jar <ROAD|SEA> <WINDOWS|MACOS>\n" +
@@ -128,9 +97,6 @@ public final class StartupHelper {
                "Supported UI platforms:  WINDOWS, MACOS";
     }
 
-    /**
-     * Immutable configuration record.
-     */
     public record AppConfig(
             DeliveryMode deliveryMode,
             UIPlatform uiPlatform,

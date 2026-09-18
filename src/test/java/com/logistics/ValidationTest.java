@@ -10,13 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for input validation and error handling:
- * - Check 5: Unsupported delivery mode
- * - Check 6: Unsupported UI platform
- * - Missing input handling
- * - Case-insensitive parsing
- */
 class ValidationTest {
 
     @Test
@@ -28,10 +21,8 @@ class ValidationTest {
                 StartupHelper.parseArguments(args)
         );
 
-        assertTrue(ex.getMessage().contains("Unsupported delivery mode 'AIR'"),
-                "Exception message must specify the invalid mode");
-        assertTrue(ex.getMessage().contains("Supported modes: ROAD, SEA"),
-                "Exception message must list supported alternatives");
+        assertTrue(ex.getMessage().contains("Unsupported delivery mode 'AIR'"));
+        assertTrue(ex.getMessage().contains("Supported modes: ROAD, SEA"));
     }
 
     @Test
@@ -43,10 +34,8 @@ class ValidationTest {
                 StartupHelper.parseArguments(args)
         );
 
-        assertTrue(ex.getMessage().contains("Unsupported UI platform 'LINUX'"),
-                "Exception message must specify the invalid platform");
-        assertTrue(ex.getMessage().contains("Supported platforms: WINDOWS, MACOS"),
-                "Exception message must list supported alternatives");
+        assertTrue(ex.getMessage().contains("Unsupported UI platform 'LINUX'"));
+        assertTrue(ex.getMessage().contains("Supported platforms: WINDOWS, MACOS"));
     }
 
     @Test

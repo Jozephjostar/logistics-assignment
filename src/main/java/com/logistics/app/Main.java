@@ -5,12 +5,6 @@ import com.logistics.ui.GUIFactory;
 
 import java.util.Scanner;
 
-/**
- * Main application entry point.
- * Coordinates input acquisition (CLI arguments or interactive console),
- * performs validation, instantiates factories via StartupHelper,
- * and launches DeliveryApplication.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -18,25 +12,18 @@ public class Main {
             StartupHelper.AppConfig config;
 
             if (args != null && args.length > 0) {
-                // Command-line arguments mode
                 config = StartupHelper.parseArguments(args);
             } else {
-                // Interactive console input mode
                 config = promptInteractiveConfig();
             }
 
-            // Print configuration header
             System.out.println("Delivery mode: " + config.deliveryMode());
             System.out.println("UI platform: " + config.uiPlatform());
 
-            // Instantiate creator and abstract factory using StartupHelper
             Logistics logistics = StartupHelper.createLogistics(config.deliveryMode());
             GUIFactory guiFactory = StartupHelper.createGUIFactory(config.uiPlatform());
 
-            // Inject abstractions into DeliveryApplication client
             DeliveryApplication app = new DeliveryApplication(guiFactory, logistics);
-
-            // Execute application workflow: render UI components and plan delivery
             app.run(config.cargo(), config.destination());
 
         } catch (IllegalArgumentException ex) {
@@ -48,11 +35,6 @@ public class Main {
         }
     }
 
-    /**
-     * Interactively prompts the user via console input when no CLI arguments are supplied.
-     *
-     * @return validated AppConfig
-     */
     private static StartupHelper.AppConfig promptInteractiveConfig() {
         Scanner scanner = new Scanner(System.in);
 
