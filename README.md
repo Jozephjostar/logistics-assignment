@@ -5,6 +5,7 @@
 **Academic Year:** 2026–2027 | Year 2, Trimester 4  
 **Student:** Nursultan Maratov (Group: SE-2523)  
 **Instructor:** Yerassyl Bekenov  
+**GitHub Repository:** [https://github.com/Jozephjostar/logistics-assignment](https://github.com/Jozephjostar/logistics-assignment)  
 
 ---
 

@@ -5,8 +5,8 @@
 **Student:** Nursultan Maratov  
 **Group:** SE-2523  
 **Instructor:** Yerassyl Bekenov  
-**GitHub Repository:** [https://github.com/nursultanmaratov/logistics-assignment](https://github.com/nursultanmaratov/logistics-assignment)  
-**Submitted Commit:** `4ee905f` (docs: add formal assignment report in Markdown, HTML, and submission PDF)  
+**GitHub Repository:** [https://github.com/Jozephjostar/logistics-assignment](https://github.com/Jozephjostar/logistics-assignment)  
+**Submitted Commit:** `fc38cfc` (refactor: simplify code structure and remove comments across all classes)  
 
 ---
 
