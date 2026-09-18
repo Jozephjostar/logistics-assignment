@@ -6,7 +6,7 @@
 **Group:** SE-2523  
 **Instructor:** Yerassyl Bekenov  
 **GitHub Repository:** [https://github.com/nursultanmaratov/logistics-assignment](https://github.com/nursultanmaratov/logistics-assignment)  
-**Submitted Commit:** `ddee96e` (docs: add comprehensive README and 50-point defense preparation guide)  
+**Submitted Commit:** `4ee905f` (docs: add formal assignment report in Markdown, HTML, and submission PDF)  
 
 ---
 

@@ -180,7 +180,7 @@ html_content = f"""<!DOCTYPE html>
   <div><strong>Group:</strong> SE-2523</div>
   <div><strong>Format:</strong> Java 17 | Console Application</div>
   <div><strong>GitHub Repository:</strong> <a href="https://github.com/nursultanmaratov/logistics-assignment">github.com/nursultanmaratov/logistics-assignment</a></div>
-  <div><strong>Submitted Commit:</strong> <code>ddee96e</code></div>
+  <div><strong>Submitted Commit:</strong> <code>4ee905f</code></div>
 </div>
 
 <h2>1. Introduction & Pattern Rationale</h2>
