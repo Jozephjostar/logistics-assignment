@@ -1,0 +1,83 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultFontName "Helvetica, Arial, sans-serif"
+
+title Abstract Factory Pattern - Cross-Platform UI Architecture
+
+package "com.logistics.ui" {
+    interface Button <<AbstractProduct>> {
+        + paint(): void
+    }
+
+    interface Checkbox <<AbstractProduct>> {
+        + paint(): void
+    }
+
+    interface GUIFactory <<AbstractFactory>> {
+        + createButton(): Button
+        + createCheckbox(): Checkbox
+    }
+}
+
+package "com.logistics.ui.windows" {
+    class WindowsButton <<ConcreteProduct>> {
+        + paint(): void
+    }
+
+    class WindowsCheckbox <<ConcreteProduct>> {
+        + paint(): void
+    }
+
+    class WindowsFactory <<ConcreteFactory>> {
+        + createButton(): Button
+        + createCheckbox(): Checkbox
+    }
+
+    WindowsButton ..|> Button : implements
+    WindowsCheckbox ..|> Checkbox : implements
+    WindowsFactory ..|> GUIFactory : implements
+    WindowsFactory ..> WindowsButton : <<creates>>
+    WindowsFactory ..> WindowsCheckbox : <<creates>>
+}
+
+package "com.logistics.ui.macos" {
+    class MacOSButton <<ConcreteProduct>> {
+        + paint(): void
+    }
+
+    class MacOSCheckbox <<ConcreteProduct>> {
+        + paint(): void
+    }
+
+    class MacOSFactory <<ConcreteFactory>> {
+        + createButton(): Button
+        + createCheckbox(): Checkbox
+    }
+
+    MacOSButton ..|> Button : implements
+    MacOSCheckbox ..|> Checkbox : implements
+    MacOSFactory ..|> GUIFactory : implements
+    MacOSFactory ..> MacOSButton : <<creates>>
+    MacOSFactory ..> MacOSCheckbox : <<creates>>
+}
+
+package "com.logistics.app" {
+    class DeliveryApplication <<Client>> {
+        - button: Button
+        - checkbox: Checkbox
+        - logistics: Logistics
+        + DeliveryApplication(factory: GUIFactory, logistics: Logistics)
+        + renderUI(): void
+        + planDelivery(cargo: String, destination: String): void
+        + run(cargo: String, destination: String): void
+    }
+}
+
+DeliveryApplication --> GUIFactory : uses factory to create products
+DeliveryApplication --> Button : uses
+DeliveryApplication --> Checkbox : uses
+
+@enduml

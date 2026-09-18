@@ -1,0 +1,49 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultFontName "Helvetica, Arial, sans-serif"
+
+title Factory Method Pattern - Logistics Transport Architecture
+
+package "com.logistics.transport" {
+    interface Transport <<Product>> {
+        + deliver(cargo: String, destination: String): void
+    }
+
+    class Truck <<ConcreteProduct>> {
+        + deliver(cargo: String, destination: String): void
+    }
+
+    class Ship <<ConcreteProduct>> {
+        + deliver(cargo: String, destination: String): void
+    }
+
+    Truck ..|> Transport : implements
+    Ship ..|> Transport : implements
+}
+
+package "com.logistics.creator" {
+    abstract class Logistics <<Creator>> {
+        + {abstract} createTransport(): Transport
+        + planDelivery(cargo: String, destination: String): void
+    }
+
+    class RoadLogistics <<ConcreteCreator>> {
+        + createTransport(): Transport
+    }
+
+    class SeaLogistics <<ConcreteCreator>> {
+        + createTransport(): Transport
+    }
+
+    RoadLogistics --|> Logistics : extends
+    SeaLogistics --|> Logistics : extends
+}
+
+Logistics ..> Transport : uses (invokes deliver)
+RoadLogistics ..> Truck : <<creates>>
+SeaLogistics ..> Ship : <<creates>>
+
+@enduml
